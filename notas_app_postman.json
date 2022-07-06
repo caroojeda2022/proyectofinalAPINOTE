@@ -1,1 +1,189 @@
+{
+	"info": {
+		"_postman_id": "d7bbef41-6b8a-412e-97bd-1e4d57092ada",
+		"name": "Testing Notas App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2269813"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"andre\",\n    \"password\": \"1234\",\n    \"mensaje\": \"testing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"andre2\",\n    \"password\": \"2222\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "Notes List ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTY1NTA3Nzk5NCwiZXhwIjoxNjU1MDgxNTk0fQ.vax5PWqsEECfTnb79kHOV4xch8XGnBDzIaE5j_kAf1s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/notes",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save new note",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTY1NTA3Nzk5NCwiZXhwIjoxNjU1MDgxNTk0fQ.vax5PWqsEECfTnb79kHOV4xch8XGnBDzIaE5j_kAf1s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"nota uno\",\n    \"texto\": \"nota con id\",\n    \"categoria\": \"miscelaneo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/notes",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Note by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/notes/1655063809382",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"notes",
+								"1655063809382"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Note",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"321\",\n    \"titulo\": \"nota uno modificada\",\n    \"texto\": \"nota con id\",\n    \"categoria\": \"miscelaneo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/notes/1655063279198",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"notes",
+								"1655063279198"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
 
