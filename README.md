@@ -14,15 +14,16 @@ Base de datos vacía en una instancia de MySQL local. Guardar el archivo .env.ex
 - idUser - Usuarios registrado.
 - registro - email.
 - passUser - password.
+  
   NOTE:
   -id
-  -user
+  -User
   -createdNote - Creación nota de texto.
   -idNote - Título de notas de texto.
   -inforNote - Información de nota de texto (U.registrado).
   -modifiedNote - Modificar la nota (Título,texto y categoría).
   -deleteNote - Eliminar la nota.
-  -pubprivNote - Marcar la nota como pública (Usuario creador de la nota y registrado).
+  -pubNote - Marcar la nota como pública (Por el usuario creador de la nota, que es un usuario registrado).
   -imagen unica por cada nota.
 
 ##Endpoints:
@@ -30,7 +31,7 @@ Base de datos vacía en una instancia de MySQL local. Guardar el archivo .env.ex
 - **POST / user** - Registro de usuario anónimo.
 - **GET / user/ :id** Devuelve información usuario anónimo.
 - **POST / login** Registro de usuario registrado.
-- **GET / idUser** Devuelve información del usuario.
+- **GET / idUser** Devuelve información del usuario registrado.
 - **POST /** Permite crear una nota (necesita cabecera de token) (título,texto y categoría única (fijas)
 - **GET /** Lista títulos de notas de usuarios registrados.
 - **PUT /** Permite crear, editar y borrar categorías (titulo, texto y categoría única.
