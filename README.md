@@ -15,7 +15,8 @@ Base de datos vacía en una instancia de MySQL local. Guardar el archivo .env.ex
 - registro - email.
 - passUser - password.
   
-  NOTE:
+  -NOTE:
+  
   -id
   -User
   -createdNote - Creación nota de texto.
