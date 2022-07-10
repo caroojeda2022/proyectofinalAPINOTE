@@ -13,6 +13,7 @@ Este ejercicio consiste en crear una API que publica notas privadas y categoriza
 - [/deleteNotes] Página de eliminar notas.
 
 ##Entidades:
+
 -USER:
 * id - Usuario Anónimo /  **POST /
 * email.
