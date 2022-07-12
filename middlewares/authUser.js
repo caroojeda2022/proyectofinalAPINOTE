@@ -1,46 +1,33 @@
-// import jwt from 'jsonwebtoken'
-
 const jwt = require('jsonwebtoken');
-const jwtPrivateKey = 'superSecureSecret';
 
-const parseToken = function (headerValue) {
-  if (headerValue) {
-    const [type, token] = headerValue.split(' ');
-    if (type === 'Bearer' && typeof token !== 'undefined') {
-      return token;
-    }
-    return undefined;
-  }
-};
+const { generateError } = require('../helpers');
 
-module.exports = function (req, res, next) {
-  const token = parseToken(req.header('Authorization'));
-  if (!token) {
-    return res.status(401).send({
-      errors: [
-        {
-          status: '401',
-          title: 'Autenticacion fallida',
-          description: 'Falta el token',
-        },
-      ],
-    });
-  }
-
+const authUser = (req, res, next) => {
   try {
-    const payload = jwt.verify(token, jwtPrivateKey, { algorithms: ['HS256'] });
-    req.user = { _id: payload.uid };
+    // Obtenemos el token.
+    const { authorization } = req.headers;
+
+    if (authorization) {
+      // Variable que contendrá la información del token.
+      let token;
+
+      try {
+        // Intentamos obtener la info del token.
+        token = jwt.verify(authorization, process.env.SECRET);
+      } catch {
+        throw generateError('Token incorrecto', 401);
+      }
+
+      // Agregamos una nueva propiedad a la request.
+      req.idUser = token.id;
+    }
+
+    // Saltamos al siguiente controlador.
     next();
   } catch (err) {
-    res.status(400).send({
-      errors: [
-        {
-          status: '400',
-          title: 'Error de validacion',
-          description: 'Token invalido',
-        },
-      ],
-    });
+    next(err);
   }
 };
+
+module.exports = authUser;
 
